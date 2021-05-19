@@ -3,6 +3,7 @@ package com.paripassu.teste.controllers;
 import com.paripassu.teste.controllers.dto.CreateSenhaDTO;
 import com.paripassu.teste.controllers.dto.SenhaDTO;
 import com.paripassu.teste.models.Senha;
+import com.paripassu.teste.services.ApagarSenhasService;
 import com.paripassu.teste.services.CriarSenhaService;
 import com.paripassu.teste.services.ObterProximaSenhaService;
 import com.paripassu.teste.services.ObterSenhaAtualService;
@@ -42,6 +43,13 @@ public class SenhaController {
         return new SenhaDTO(novaSenha);
     }
 
+    @Autowired
+    private ApagarSenhasService apagarSenhasService;
 
+    @PostMapping(path = "resetar")
+    public boolean deletarSenhas() {
+        this.apagarSenhasService.delete();
+        return true;
+    }
 
 }

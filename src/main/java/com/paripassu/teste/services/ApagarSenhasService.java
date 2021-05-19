@@ -6,13 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ObterSenhaAtualService {
+public class ApagarSenhasService {
 
     @Autowired
     private SenhaRepository senhaRepository;
 
-    public Senha get() {
-        Senha ultimaSenha = this.senhaRepository.getSenhaAtual();
-        return ultimaSenha;
+    public void delete() {
+        this.senhaRepository.deleteAll();
     }
 }
