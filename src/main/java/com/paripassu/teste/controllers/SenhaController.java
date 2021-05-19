@@ -4,6 +4,7 @@ import com.paripassu.teste.controllers.dto.CreateSenhaDTO;
 import com.paripassu.teste.controllers.dto.SenhaDTO;
 import com.paripassu.teste.models.Senha;
 import com.paripassu.teste.services.CriarSenhaService;
+import com.paripassu.teste.services.ObterProximaSenhaService;
 import com.paripassu.teste.services.ObterSenhaAtualService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -32,11 +33,15 @@ public class SenhaController {
         return new SenhaDTO(novaSenha);
     }
 
+    @Autowired
+    private ObterProximaSenhaService obterProximaSenhaService;
 
     @PostMapping(path = "chamar-proxima")
     public SenhaDTO chamarProxima() {
-        Senha novaSenha = this.criarSenhaService.create(null);
+        Senha novaSenha = this.obterProximaSenhaService.get();
         return new SenhaDTO(novaSenha);
     }
+
+
 
 }

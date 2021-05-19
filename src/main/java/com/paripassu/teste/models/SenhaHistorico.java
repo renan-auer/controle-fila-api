@@ -8,15 +8,41 @@ import java.util.Date;
 @Entity
 public class SenhaHistorico {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private int sequencia;
     private String codigo;
 
     @Enumerated(EnumType.STRING)
     private TipoSenha tipo;
     private Date horaCriacao;
     private Date horaChamada;
+
+    public SenhaHistorico() {}
+
+    public SenhaHistorico(Senha senha, Date horaChamada) {
+        this.sequencia = senha.getSequencia();
+        this.codigo = senha.getCodigo();
+        this.tipo = senha.getTipo();
+        this.horaCriacao = senha.getHoraCriacao();
+        this.horaChamada = horaChamada;
+    }
+
+    public Date getHoraChamada() {
+        return horaChamada;
+    }
+
+    public void setHoraChamada(Date horaChamada) {
+        this.horaChamada = horaChamada;
+    }
+
+    public int getSequencia() {
+        return sequencia;
+    }
+
+    public void setSequencia(int sequencia) {
+        this.sequencia = sequencia;
+    }
 
     public int getId() {
         return id;
@@ -48,13 +74,5 @@ public class SenhaHistorico {
 
     public void setHoraCriacao(Date horaCriacao) {
         this.horaCriacao = horaCriacao;
-    }
-
-    public Date getHoraChamada() {
-        return horaChamada;
-    }
-
-    public void setHoraChamada(Date horaChamada) {
-        this.horaChamada = horaChamada;
     }
 }

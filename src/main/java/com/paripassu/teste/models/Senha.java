@@ -12,6 +12,7 @@ public class Senha {
     private int id;
     private int sequencia;
     private String codigo;
+    private boolean jaChamada;
 
     @Enumerated(EnumType.STRING)
     private TipoSenha tipo;
@@ -23,7 +24,16 @@ public class Senha {
         this.sequencia = sequencia;
         this.codigo = codigo;
         this.tipo = tipo;
+        this.jaChamada = false;
         this.horaCriacao = horaCriacao;
+    }
+
+    public boolean isJaChamada() {
+        return jaChamada;
+    }
+
+    public void setJaChamada(boolean jaChamada) {
+        this.jaChamada = jaChamada;
     }
 
     public int getSequencia() {
