@@ -2,12 +2,18 @@ package com.paripassu.teste.models;
 
 import com.paripassu.teste.enums.TipoSenha;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 public class SenhaHistorico {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String codigo;
+
+    @Enumerated(EnumType.STRING)
     private TipoSenha tipo;
     private Date horaCriacao;
     private Date horaChamada;
