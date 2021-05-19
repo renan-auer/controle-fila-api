@@ -8,9 +8,9 @@ import java.util.Date;
 @Entity
 public class Senha {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private int sequencia;
     private String codigo;
 
     @Enumerated(EnumType.STRING)
@@ -19,11 +19,19 @@ public class Senha {
 
     public Senha() {}
 
-    public Senha(int id, String codigo, TipoSenha tipo, Date horaCriacao) {
-        this.id = id;
+    public Senha(int sequencia, String codigo, TipoSenha tipo, Date horaCriacao) {
+        this.sequencia = sequencia;
         this.codigo = codigo;
         this.tipo = tipo;
         this.horaCriacao = horaCriacao;
+    }
+
+    public int getSequencia() {
+        return sequencia;
+    }
+
+    public void setSequencia(int sequencia) {
+        this.sequencia = sequencia;
     }
 
     public int getId() {

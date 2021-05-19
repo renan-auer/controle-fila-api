@@ -17,11 +17,11 @@ public class CriarSenhaService {
     public Senha create(CreateSenhaDTO createSenhaDTO) {
         Senha ultimaSenha = this.senhaRepository.findLastSenhaByTipoSenha(createSenhaDTO.getTipoSenha().toString());
 
-        int newId = ultimaSenha != null ? ultimaSenha.getId() + 1 : 1;
+        int novaSequencia = ultimaSenha != null ? ultimaSenha.getSequencia() + 1 : 1;
 
         Senha newSenha = new Senha(
-                newId,
-                createSenhaDTO.getTipoSenha().getPrefix() + String.format("%03d", newId),
+                novaSequencia,
+                createSenhaDTO.getTipoSenha().getPrefix() + String.format("%03d", novaSequencia),
                 createSenhaDTO.getTipoSenha(),
                 new Date());
 

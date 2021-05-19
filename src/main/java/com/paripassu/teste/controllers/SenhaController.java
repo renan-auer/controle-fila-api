@@ -16,7 +16,7 @@ public class SenhaController {
     @Autowired
     private ObterSenhaAtualService obterSenhaAtualService;
 
-    @GetMapping(path = "/atual")
+    @GetMapping(path = "atual")
     public SenhaDTO obter() {
         Senha ultimaSenha = this.obterSenhaAtualService.get();
         return new SenhaDTO(ultimaSenha);
@@ -26,9 +26,16 @@ public class SenhaController {
     @Autowired
     private CriarSenhaService criarSenhaService;
 
-    @PostMapping(path = "/gerar-nova")
-    public SenhaDTO create(@RequestBody CreateSenhaDTO createSenhaDTO) {
+    @PostMapping(path = "gerar-nova")
+    public SenhaDTO criar(@RequestBody CreateSenhaDTO createSenhaDTO) {
         Senha novaSenha = this.criarSenhaService.create(createSenhaDTO);
+        return new SenhaDTO(novaSenha);
+    }
+
+
+    @PostMapping(path = "chamar-proxima")
+    public SenhaDTO chamarProxima() {
+        Senha novaSenha = this.criarSenhaService.create(null);
         return new SenhaDTO(novaSenha);
     }
 

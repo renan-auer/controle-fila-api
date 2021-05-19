@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ObterSenhaAtualService {
+public class ObterProximaSenhaService {
 
     @Autowired
     private SenhaRepository senhaRepository;
