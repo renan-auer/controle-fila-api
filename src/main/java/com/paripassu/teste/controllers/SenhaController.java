@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping(value = "senha", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 public class SenhaController {
@@ -40,7 +41,7 @@ public class SenhaController {
     @PostMapping(path = "chamar-proxima")
     public SenhaDTO chamarProxima() {
         Senha novaSenha = this.obterProximaSenhaService.get();
-        return new SenhaDTO(novaSenha);
+        return novaSenha == null ? null : new SenhaDTO(novaSenha);
     }
 
     @Autowired
