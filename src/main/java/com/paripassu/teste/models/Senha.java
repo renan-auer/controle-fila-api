@@ -13,6 +13,7 @@ public class Senha {
     private int sequencia;
     private String codigo;
     private boolean jaChamada;
+    private boolean atual;
 
     @Enumerated(EnumType.STRING)
     private TipoSenha tipo;
@@ -26,6 +27,14 @@ public class Senha {
         this.tipo = tipo;
         this.jaChamada = false;
         this.horaCriacao = horaCriacao;
+    }
+
+    public boolean isAtual() {
+        return atual;
+    }
+
+    public void setAtual(boolean atual) {
+        this.atual = atual;
     }
 
     public boolean isJaChamada() {
