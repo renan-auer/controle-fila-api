@@ -21,10 +21,19 @@ public class ObterProximaSenhaService {
     public Senha get() {
         Senha ultimaSenha = this.senhaRepository.getSenhaAtual();
 
-        this.senhaHistoricoRepository.save(new SenhaHistorico(ultimaSenha, new Date()));
-        ultimaSenha.setJaChamada(true);
-        this.senhaRepository.save(ultimaSenha);
+        if (ultimaSenha == null) return null;
 
-        return this.senhaRepository.getSenhaAtual();
+        ultimaSenha.setJaChamada(true);
+        ultimaSenha.setAtual(false);
+        this.senhaRepository.save(ultimaSenha);
+        this.senhaHistoricoRepository.save(new SenhaHistorico(ultimaSenha, new Date()));
+
+        Senha novaSenha = this.senhaRepository.getSenhaAtual();
+        if (novaSenha == null) return null;
+        novaSenha.setAtual(true);
+
+
+        this.senhaRepository.save(novaSenha);
+        return novaSenha;
     }
 }
