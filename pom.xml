@@ -11,7 +11,7 @@
     <groupId>com.paripassu</groupId>
     <artifactId>teste</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>teste</name>
     <description>Teste Paripassu</description>
     <properties>
